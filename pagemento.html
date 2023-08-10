@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento da Empresa de Carros</title>
+    <link rel="stylesheet" href="pagamento.css">
+    <style>
+        /* Estilos personalizados */
+        /* ... (os estilos permanecem iguais) ... */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pagamento Seguro</h1>
+        <div class="payment-form">
+            <div class="card-details">
+                <label for="cardHolder">Nome do Titular</label>
+                <input type="text" id="cardHolder" placeholder="Nome do Titular" required>
+
+                <label for="cardNumber">Número do Cartão</label>
+                <input type="text" id="cardNumber" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" autocomplete="off" required>
+                
+                <label for="expiry">Validade</label>
+                <input type="text" id="expiry" placeholder="MM/AA" maxlength="5" autocomplete="off" required>
+                
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" placeholder="XXX" maxlength="3" autocomplete="off" required>
+            </div>
+            
+            <button href="conf.html">Pagar</button>
+
+        </div>
+    </div>
+    <script>
+        // JavaScript para processar o pagamento
+        document.getElementById("payButton").addEventListener("click", function() {
+            const cardHolder = document.getElementById("cardHolder").value;
+            const cardNumber = document.getElementById("cardNumber").value;
+            const expiry = document.getElementById("expiry").value;
+            const cvv = document.getElementById("cvv").value;
+
+            // Verificação de entrada numérica no campo de validade
+            if (!/^\d*$/.test(expiry)) {
+                alert("Por favor, insira apenas números no campo de validade.");
+                return;
+            }
+
+            // Simulação de processamento de pagamento
+            // Você precisaria integrar com um serviço de pagamento real aqui
+
+            // Exemplo de sucesso
+            // Se a transação for bem-sucedida, você pode redirecionar o usuário para uma página de confirmação
+            window.location.href = "confirmacao.html";
+
+            // Exemplo de falha
+            // Se a transação falhar, você pode exibir uma mensagem de erro para o usuário
+            // alert("Erro ao processar o pagamento. Por favor, tente novamente.");
+        });
+    </script>
+</body>
+</html>

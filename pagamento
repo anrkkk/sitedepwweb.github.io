@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área com Preço Ajustável</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .area-display {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .price-slider {
+            width: 80%;
+            margin: 0 auto;
+        }
+        #priceValue {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Área com Preço Ajustável</h1>
+        <div class="area-display">
+            <p>Área: <span id="areaValue">0</span> m²</p>
+        </div>
+        <div class="price-slider">
+            <p>Preço por m²: R$<span id="priceValue">50</span></p>
+            <input type="range" id="priceSlider" min="10" max="100" value="50" step="5">
+        </div>
+        <p>Preço Total: R$<span id="totalPrice">0</span></p>
+    </div>
+
+    <script>
+        const areaValue = document.getElementById("areaValue");
+        const priceValue = document.getElementById("priceValue");
+        const totalPrice = document.getElementById("totalPrice");
+        const priceSlider = document.getElementById("priceSlider");
+
+        priceSlider.addEventListener("input", updatePrice);
+
+        function updatePrice() {
+            const area = parseFloat(areaValue.innerText);
+            const price = parseFloat(priceSlider.value);
+            const total = area * price;
+            totalPrice.innerText = total.toFixed(2);
+            priceValue.innerText = price;
+        }
+    </script>
+</body>
+</html>
